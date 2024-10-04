@@ -4,14 +4,17 @@ import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-const DeleteBook = () => {
+const DeleteBook = async () => {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const { id } = useParams();
+
 	const handleDeleteBook = () => {
 		setLoading(true);
 		axios
-			.delete(`https://bookstore-mern-integrated-backend.onrender.com/${id}`)
+			.delete(
+				`https://bookstore-mern-integrated-backend.onrender.com/books/${id}`
+			)
 			.then(() => {
 				setLoading(false);
 				navigate("/");
